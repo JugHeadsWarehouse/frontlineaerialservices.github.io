@@ -9,199 +9,259 @@
 <style>
 :root{
   --text:#f8fafc;
-  --muted:rgba(248,250,252,0.90);
+  --muted:rgba(248,250,252,0.88);
 
-  /* glass cards */
-  --card:rgba(15,23,42,0.48);
-  --border:rgba(255,255,255,0.24);
+  --card:rgba(15,23,42,0.46);
+  --card2:rgba(15,23,42,0.34);
+  --border:rgba(255,255,255,0.18);
 
-  /* accent */
   --accent:#7dd3fc;
-  --accent-strong:#bfe9ff;
+  --accent2:#a7f3d0;
 
-  --radius:20px;
+  --radius:22px;
+  --shadow: 0 18px 44px rgba(0,0,0,0.28);
+  --shadow2: 0 10px 24px rgba(0,0,0,0.22);
 }
 
 *{box-sizing:border-box}
 html,body{margin:0;height:100%}
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Helvetica Neue", Helvetica, sans-serif;
   color:var(--text);
-  background:url("hero.png") center / cover no-repeat fixed;
   line-height:1.6;
+
+  /* Background image */
+  background-image: url("hero.png");
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position:center 18%;
+  background-attachment:fixed;
+
   position:relative;
+  overflow-x:hidden;
 }
 
-/* readability overlay: slightly stronger at top so headline/subtext read clean */
+/* Global overlay: keeps hero readable without killing the image */
 body::before{
   content:"";
   position:fixed;
   inset:0;
-  background:linear-gradient(
-    180deg,
-    rgba(0,0,0,0.28),
-    rgba(0,0,0,0.16) 35%,
-    rgba(0,0,0,0.28)
-  );
+  background:
+    radial-gradient(1200px 700px at 50% 10%, rgba(0,0,0,0.18), transparent 55%),
+    linear-gradient(180deg, rgba(0,0,0,0.32), rgba(0,0,0,0.14) 40%, rgba(0,0,0,0.34));
+  pointer-events:none;
   z-index:0;
 }
 
+/* subtle vignette */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  box-shadow: inset 0 0 110px rgba(0,0,0,0.28);
+  pointer-events:none;
+  z-index:0;
+}
+
+a{ color: #d9f3ff; text-decoration:none; font-weight:700; }
+a:hover{ text-decoration:underline; }
+
 .wrap{
-  max-width:1100px;
-  margin:auto;
-  padding:32px 18px 48px;
+  max-width:1120px;
+  margin:0 auto;
+  padding:32px 18px 56px;
   position:relative;
   z-index:1;
 }
 
+/* HERO */
 .hero{
   text-align:center;
-  padding:24px 16px 18px;
+  padding:34px 16px 24px;
 }
 
-/* BIGGER "Coming Soon" pill */
 .coming{
   display:inline-flex;
   align-items:center;
   gap:12px;
   padding:12px 20px;
-  font-size:17px;
-  font-weight:800;
-  letter-spacing:0.2px;
   border-radius:999px;
-  background:rgba(0,0,0,0.55);
   border:1px solid var(--border);
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
-  box-shadow:0 12px 28px rgba(0,0,0,0.30);
-}
+  background:rgba(0,0,0,0.52);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: var(--shadow2);
 
-.coming span{
-  width:10px;
-  height:10px;
+  font-weight:900;
+  letter-spacing:0.2px;
+  font-size:18px;
+}
+.coming .dot{
+  width:10px;height:10px;border-radius:50%;
   background:#22c55e;
-  border-radius:50%;
-  box-shadow:0 0 0 5px rgba(34,197,94,.22);
+  box-shadow:0 0 0 6px rgba(34,197,94,.22);
 }
 
 h1{
   margin:18px 0 10px;
-  font-size:clamp(40px,4.7vw,60px);
-  text-shadow:0 10px 30px rgba(0,0,0,.55);
+  font-size:clamp(42px, 4.8vw, 64px);
+  letter-spacing:-0.6px;
+  text-shadow:0 14px 36px rgba(0,0,0,0.48);
 }
 
-/* Put the subtext on a glass strip so it’s readable no matter the background */
+/* Premium sub strip */
 .hero-sub{
-  max-width:920px;
+  max-width:980px;
   margin:14px auto 0;
-  padding:12px 16px;
-  border-radius:16px;
-  background:rgba(15,23,42,0.42);
+  padding:14px 18px;
+  border-radius:18px;
   border:1px solid var(--border);
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
-  box-shadow:0 10px 22px rgba(0,0,0,0.20);
+  background: rgba(15,23,42,0.38);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: var(--shadow2);
+  color: var(--muted);
   font-size:18px;
-  color:var(--muted);
 }
 
+/* Buttons */
 .nav{
-  margin-top:16px;
+  margin-top:18px;
   display:flex;
   justify-content:center;
-  gap:12px;
   flex-wrap:wrap;
+  gap:12px;
 }
 
-.nav a{
-  padding:11px 16px;
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:12px 16px;
   border-radius:14px;
-  border:1px solid var(--border);
-  background:rgba(15,23,42,.52);
+  border:1px solid rgba(255,255,255,0.22);
+  background: linear-gradient(180deg, rgba(15,23,42,0.62), rgba(15,23,42,0.44));
   color:var(--text);
   text-decoration:none;
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-  box-shadow:0 10px 18px rgba(0,0,0,0.18);
-  font-weight:600;
+  font-weight:800;
+  box-shadow: var(--shadow2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transform: translateY(0);
+  transition: transform .12s ease, background .12s ease, border-color .12s ease;
+}
+.btn:hover{
+  text-decoration:none;
+  transform: translateY(-1px);
+  border-color: rgba(125,211,252,0.55);
+  background: linear-gradient(180deg, rgba(15,23,42,0.70), rgba(15,23,42,0.50));
+}
+.btn.primary{
+  border-color: rgba(125,211,252,0.55);
+  box-shadow: 0 18px 44px rgba(0,0,0,0.28), 0 0 0 1px rgba(125,211,252,0.18) inset;
 }
 
-.nav a:hover{background:rgba(15,23,42,.68)}
-
+/* LAYOUT GRID */
 .grid{
   display:grid;
-  grid-template-columns:repeat(12,1fr);
+  grid-template-columns:repeat(12, 1fr);
   gap:16px;
-  margin-top:24px;
+  margin-top:26px;
 }
 
 .card{
-  grid-column:span 12;
-  background:var(--card);
+  grid-column: span 12;
   border:1px solid var(--border);
-  border-radius:var(--radius);
+  background: rgba(15,23,42,0.46);
+  border-radius: var(--radius);
   padding:22px;
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
-  box-shadow:0 16px 34px rgba(0,0,0,0.22);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .card h2{
   margin:0 0 10px;
-  font-size:21px;
+  font-size:20px;
+  letter-spacing:-0.2px;
 }
 
-ul{padding-left:18px;margin:10px 0}
-li{margin:8px 0}
-
-.muted{color:var(--muted)}
-
-/* Email link: make it readable */
-a{
-  color:var(--accent-strong);
-  text-decoration:none;
-  font-weight:700;
+/* subtle card header accent line */
+.card h2::after{
+  content:"";
+  display:block;
+  width:54px;
+  height:3px;
+  margin-top:10px;
+  border-radius:999px;
+  background: linear-gradient(90deg, var(--accent), rgba(167,243,208,0.65));
+  opacity:0.9;
 }
-a:hover{text-decoration:underline}
+
+ul{ margin:10px 0 0; padding-left:18px; }
+li{ margin:8px 0; }
+.muted{ color: var(--muted); }
 
 .timeline{
   list-style:none;
   padding:0;
   margin:10px 0 0;
 }
-
 .timeline li{
-  border-left:2px solid var(--accent);
+  border-left:2px solid rgba(125,211,252,0.60);
   padding-left:12px;
   margin:14px 0;
 }
-
 .tag{
+  display:inline-block;
   margin-left:10px;
   font-size:12px;
   padding:4px 10px;
   border-radius:999px;
-  background:rgba(0,0,0,.35);
-  border:1px solid var(--border);
+  border:1px solid rgba(255,255,255,0.18);
+  background: rgba(0,0,0,0.30);
+  color: var(--muted);
 }
 
 footer{
   margin-top:28px;
   text-align:center;
   font-size:14px;
-  color:var(--muted);
+  color: var(--muted);
+  text-shadow: 0 8px 22px rgba(0,0,0,0.35);
 }
 
-/* desktop */
+/* two columns on wide screens */
 @media(min-width:900px){
-  .span-6{grid-column:span 6}
+  .span-6{ grid-column: span 6; }
 }
 
-/* small screens: ensure hero doesn’t feel cramped */
-@media(max-width:520px){
-  .coming{font-size:15px;padding:10px 16px}
-  .hero-sub{font-size:16px}
+/* MOBILE FIXES:
+   - background-attachment fixed often looks weird on iOS; use scroll
+   - adjust position so drone is more visible
+   - slightly reduce zoom so it doesn’t feel “too close”
+*/
+@media(max-width:720px){
+  body{
+    background-attachment: scroll;
+    background-position: center 10%;
+    background-size: 120%;
+  }
+  .hero{ padding-top:26px; }
+  .coming{ font-size:16px; padding:10px 16px; }
+  .hero-sub{ font-size:16px; }
+  .btn{ padding:11px 14px; }
+}
+
+/* EXTRA small */
+@media(max-width:420px){
+  body{
+    background-position: center 6%;
+    background-size: 128%;
+  }
+  h1{ font-size: clamp(34px, 8vw, 44px); }
 }
 </style>
 </head>
@@ -209,99 +269,103 @@ footer{
 <body>
 <div class="wrap">
 
-<section class="hero">
-  <div class="coming"><span></span> Coming Soon to the North Country • FAA Part 107 • Veteran-Owned</div>
+  <section class="hero">
+    <div class="coming">
+      <span class="dot"></span>
+      Coming Soon to the North Country • FAA Part 107 • Veteran-Owned
+    </div>
 
-  <h1>Frontline Drone & Aerial Services</h1>
+    <h1>Frontline Drone & Aerial Services</h1>
 
-  <div class="hero-sub">
-    Professional aerial media and documentation serving Jefferson County, NY and surrounding areas.
-    Services will begin once final setup, approvals, and insurance are completed.
+    <div class="hero-sub">
+      Professional aerial media and documentation serving Jefferson County, NY and surrounding areas.
+      Services will begin once final setup, approvals, and insurance are completed.
+    </div>
+
+    <div class="nav">
+      <a class="btn primary" href="#services">Planned Services</a>
+      <a class="btn" href="#upcoming">Upcoming Capabilities</a>
+      <a class="btn" href="#timeline">Timeline</a>
+      <a class="btn" href="mailto:info.frontlinedroneaerial@gmail.com">Email</a>
+    </div>
+  </section>
+
+  <div class="grid">
+
+    <section id="services" class="card span-6">
+      <h2>Planned Initial Services</h2>
+      <ul>
+        <li>Aerial photography & video</li>
+        <li>Real estate photography & walkthrough video</li>
+        <li>Event and outdoor activity coverage</li>
+        <li>Promotional & social media visuals</li>
+        <li>Property documentation <span class="muted">(visual only)</span></li>
+      </ul>
+      <p class="muted" style="margin-top:12px;">
+        Visual documentation only. Not a substitute for licensed inspection or engineering services.
+      </p>
+    </section>
+
+    <section class="card span-6">
+      <h2>What you can expect</h2>
+      <ul>
+        <li>Clear communication & expectations</li>
+        <li>Organized delivery (labeled folders/files)</li>
+        <li>Basic editing options available</li>
+        <li>Compliance-first flight planning</li>
+      </ul>
+    </section>
+
+    <section id="upcoming" class="card">
+      <h2>Upcoming Capabilities</h2>
+      <p class="muted">Planned as equipment, approvals, and insurance finalize.</p>
+      <ul>
+        <li>Thermal imaging <span class="muted">(visual data capture only)</span></li>
+        <li>Mapping & site visualization</li>
+        <li>Advanced property documentation workflows</li>
+        <li>Planning & reference data capture <span class="muted">(non-engineering)</span></li>
+      </ul>
+    </section>
+
+    <section id="timeline" class="card">
+      <h2>Launch Timeline</h2>
+      <ul class="timeline">
+        <li><strong>Phase 1</strong><span class="tag">Now</span> — Website live, portfolio building</li>
+        <li><strong>Phase 2</strong><span class="tag">Next</span> — Sample galleries & packages</li>
+        <li><strong>Phase 3</strong><span class="tag">Soon</span> — Scheduling & expanded capabilities</li>
+      </ul>
+    </section>
+
+    <section class="card span-6">
+      <h2>Service Area</h2>
+      <p>Jefferson County, NY and surrounding areas.</p>
+      <p class="muted">Projects outside the area may be considered case-by-case.</p>
+    </section>
+
+    <section class="card span-6">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:info.frontlinedroneaerial@gmail.com">info.frontlinedroneaerial@gmail.com</a></p>
+      <p class="muted">Include location, desired date, and deliverables (photos, video, or both).</p>
+    </section>
+
+    <section class="card">
+      <h2>Compliance Note</h2>
+      <p class="muted">
+        All operations are conducted in accordance with FAA regulations.
+        No flights over people or active traffic without proper authorization.
+      </p>
+    </section>
+
   </div>
 
-  <div class="nav">
-    <a href="#services">Planned Services</a>
-    <a href="#upcoming">Upcoming Capabilities</a>
-    <a href="#timeline">Timeline</a>
-    <a href="mailto:info.frontlinedroneaerial@gmail.com">Email</a>
-  </div>
-</section>
-
-<div class="grid">
-
-<section id="services" class="card span-6">
-  <h2>Planned Initial Services</h2>
-  <ul>
-    <li>Aerial photography & video</li>
-    <li>Real estate photography & walkthrough video</li>
-    <li>Event and outdoor activity coverage</li>
-    <li>Promotional & social media visuals</li>
-    <li>Property documentation <span class="muted">(visual only)</span></li>
-  </ul>
-  <p class="muted">
-    Visual documentation only. Not a substitute for licensed inspection or engineering services.
-  </p>
-</section>
-
-<section class="card span-6">
-  <h2>What you can expect</h2>
-  <ul>
-    <li>Clear communication & expectations</li>
-    <li>Organized delivery (labeled folders/files)</li>
-    <li>Basic editing options available</li>
-    <li>Compliance-first flight planning</li>
-  </ul>
-</section>
-
-<section id="upcoming" class="card">
-  <h2>Upcoming Capabilities</h2>
-  <p class="muted">Planned as equipment, approvals, and insurance finalize.</p>
-  <ul>
-    <li>Thermal imaging <span class="muted">(visual data capture only)</span></li>
-    <li>Mapping & site visualization</li>
-    <li>Advanced property documentation workflows</li>
-    <li>Planning & reference data capture <span class="muted">(non-engineering)</span></li>
-  </ul>
-</section>
-
-<section id="timeline" class="card">
-  <h2>Launch Timeline</h2>
-  <ul class="timeline">
-    <li><strong>Phase 1</strong><span class="tag">Now</span> — Website live, portfolio building</li>
-    <li><strong>Phase 2</strong><span class="tag">Next</span> — Sample galleries & packages</li>
-    <li><strong>Phase 3</strong><span class="tag">Soon</span> — Scheduling & expanded capabilities</li>
-  </ul>
-</section>
-
-<section class="card span-6">
-  <h2>Service Area</h2>
-  <p>Jefferson County, NY and surrounding areas.</p>
-</section>
-
-<section class="card span-6">
-  <h2>Contact</h2>
-  <p>Email: <a href="mailto:info.frontlinedroneaerial@gmail.com">info.frontlinedroneaerial@gmail.com</a></p>
-  <p class="muted">Include location, desired date, and deliverables (photos, video, or both).</p>
-</section>
-
-<section class="card">
-  <h2>Compliance Note</h2>
-  <p class="muted">
-    All operations are conducted in accordance with FAA regulations.
-    No flights over people or active traffic without proper authorization.
-  </p>
-</section>
-
-</div>
-
-<footer>
-  © <span id="year"></span> Frontline Drone & Aerial Services • Built on GitHub Pages
-</footer>
+  <footer>
+    © <span id="year"></span> Frontline Drone & Aerial Services • Built on GitHub Pages
+  </footer>
 
 </div>
 
 <script>
-document.getElementById("year").textContent=new Date().getFullYear();
+  document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
