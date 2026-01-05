@@ -234,10 +234,11 @@ background-attachment: fixed;
       .card{ padding: 20px; }
     }
 
-  @media (max-width: 768px){
+ @media (max-width: 768px){
   body{
     background-attachment: scroll;
-    background-position: center 0% !important; /* lower % = drone appears LOWER */
+    /* ✅ Pixel-based: bigger px = image moves DOWN */
+    background-position: center 220px !important;
   }
 
   .wrap{ padding: 14px 14px 40px; }
@@ -256,7 +257,6 @@ background-attachment: fixed;
     transform: translateY(var(--subShift-mobile));
   }
 }
-
   </style>
 </head>
 
