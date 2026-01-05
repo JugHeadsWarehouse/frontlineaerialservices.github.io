@@ -1,316 +1,382 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Frontline Drone & Aerial Services</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Veteran-owned FAA Part 107 compliant aerial media & documentation services in Jefferson County, NY.">
+  <meta charset="UTF-8" />
+  <title>Frontline Drone & Aerial Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Veteran-owned, FAA Part 107 compliant aerial services providing professional drone media and documentation."
+  />
 
-<style>
-:root{
-  --text:#f5f7fb;
-  --muted:rgba(245,247,251,.85);
-  --card:rgba(15,23,42,.62);
-  --border:rgba(255,255,255,.18);
-  --accent:#bfe9ff;
-  --shadow:0 18px 40px rgba(0,0,0,.35);
-  --radius:18px;
+  <style>
+    :root{
+      --text:#eef2f7;
+      --muted: rgba(238,242,247,0.86);
 
-  /* spacing */
-  --desktop-gap:220px;
-  --mobile-gap:460px; /* ↑ gives more room before first card on mobile */
-}
+      /* glass */
+      --card: rgba(15, 23, 42, 0.60);
+      --card-strong: rgba(15, 23, 42, 0.72);
+      --border: rgba(255,255,255,0.18);
 
-*{box-sizing:border-box;}
-html,body{height:100%;}
+      --accent:#7dd3fc;
+      --shadow: 0 18px 40px rgba(0,0,0,0.45);
+      --radius: 18px;
+    }
 
-body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  color:var(--text);
-  line-height:1.55;
+    *{ box-sizing:border-box; }
+    html, body{ height:100%; }
 
-  /* Desktop: keep your current look */
-  background:url("hero.png") center 38% / cover no-repeat fixed;
-}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      line-height: 1.55;
 
-/* readability overlays */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:linear-gradient(
-    180deg,
-    rgba(0,0,0,.25) 0%,
-    rgba(0,0,0,.10) 45%,
-    rgba(0,0,0,.22) 100%
-  );
-  pointer-events:none;
-}
-body::after{
-  content:"";
-  position:fixed;
-  inset:0;
-  box-shadow:inset 0 0 120px rgba(0,0,0,.22);
-  pointer-events:none;
-}
+      /* BACKGROUND IMAGE */
+      background: url("hero.png") center center / cover no-repeat fixed;
+      position: relative;
+    }
 
-a{color:var(--accent);font-weight:800;text-decoration:none;}
-a:hover{text-decoration:underline;}
+    /* Global overlay (keeps text readable but still shows image) */
+    body::before{
+      content:"";
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.52));
+      pointer-events:none;
+      z-index:0;
+    }
 
-.wrap{
-  max-width:1100px;
-  margin:0 auto;
-  padding:24px 18px 60px;
-  position:relative;
-}
+    body::after{
+      content:"";
+      position: fixed;
+      inset: 0;
+      box-shadow: inset 0 0 90px rgba(0,0,0,0.35);
+      pointer-events:none;
+      z-index:0;
+    }
 
-.top{text-align:center;}
+    a{ color: var(--accent); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
 
-/* pill */
-.pill{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  padding:12px 20px;
-  border-radius:999px;
-  background:rgba(0,0,0,.45);
-  border:1px solid rgba(255,255,255,.22);
-  font-weight:900;
-  font-size:14px;
-  letter-spacing:.6px;
-  text-transform:uppercase;
-  backdrop-filter:blur(10px);
-}
-.dot{
-  width:10px;height:10px;
-  border-radius:50%;
-  background:#22c55e;
-  box-shadow:0 0 0 5px rgba(34,197,94,.15);
-}
+    .wrap{
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 22px 18px 46px;
+    }
 
-/* hide text title – business name is on the drone */
-.sr-only{
-  position:absolute;
-  width:1px;height:1px;
-  overflow:hidden;
-  clip:rect(0,0,0,0);
-}
+    /* HERO */
+    .top{
+      text-align:center;
+      padding: 22px 16px 10px;
+      margin-bottom: 10px;
+    }
 
-/* description bar */
-.subbar{
-  margin:16px auto 0;
-  max-width:920px;
-  padding:14px 18px;
-  border-radius:16px;
-  background:rgba(15,23,42,.55);
-  border:1px solid rgba(255,255,255,.18);
-  backdrop-filter:blur(10px);
-  font-size:15px;
-}
+    .pill{
+      display:inline-flex;
+      gap:12px;
+      align-items:center;
+      padding: 12px 18px;              /* bigger */
+      border-radius: 999px;
+      background: rgba(0,0,0,0.42);
+      border: 1px solid rgba(255,255,255,0.22);
+      color: rgba(238,242,247,0.92);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 12px 26px rgba(0,0,0,0.30);
+    }
 
-/* buttons */
-.cta-row{
-  margin-top:14px;
-  display:flex;
-  gap:10px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
+    .dot{
+      width:10px; height:10px; border-radius:50%;
+      background:#22c55e;
+      box-shadow: 0 0 0 5px rgba(34,197,94,0.14);
+      flex: 0 0 auto;
+    }
 
-.btn{
-  padding:10px 16px;
-  border-radius:14px;
-  background:rgba(15,23,42,.52);
-  border:1px solid rgba(255,255,255,.22);
-  color:#fff;
-  font-weight:900;
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-  white-space:nowrap;
-}
+    /* Title is optional now — keep small and subtle (since drone has branding) */
+    h1{
+      margin: 14px 0 6px;
+      font-size: clamp(28px, 3.8vw, 44px);
+      letter-spacing: 0.2px;
+      text-shadow: 0 10px 34px rgba(0,0,0,0.60);
+    }
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(12,1fr);
-  gap:16px;
-  margin-top:var(--desktop-gap);
-}
+    .sub{
+      margin: 10px auto 0;
+      max-width: 880px;
+      color: var(--muted);
+      font-size: 16px;
+      text-shadow: 0 6px 24px rgba(0,0,0,0.55);
 
-.card{
-  grid-column:span 12;
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  padding:20px;
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
-  box-shadow:var(--shadow);
-}
-.card h2{margin:0 0 10px;font-size:18px;}
-ul{margin:10px 0 0;padding-left:18px;}
-li{margin:7px 0;}
-.muted{color:var(--muted);}
+      /* make it look premium */
+      background: rgba(0,0,0,0.30);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 16px;
+      padding: 14px 14px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.28);
+    }
 
-.timeline{list-style:none;padding:0;margin:10px 0 0;}
-.timeline li{
-  border-left:2px solid rgba(125,211,252,.6);
-  padding-left:12px;
-  margin:12px 0;
-}
-.tag{
-  font-size:12px;
-  padding:4px 10px;
-  border-radius:999px;
-  background:rgba(0,0,0,.25);
-  border:1px solid rgba(255,255,255,.18);
-  margin-left:8px;
-}
+    /* Buttons */
+    .cta-row{
+      margin-top: 14px;
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      flex-wrap: wrap;
+    }
 
-@media(min-width:900px){
-  .span-6{grid-column:span 6;}
-}
+    .btn{
+      display:inline-block;
+      padding: 10px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.22);
+      background: rgba(15, 23, 42, 0.45);
+      color: var(--text);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.25);
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .btn:hover{
+      background: rgba(15, 23, 42, 0.60);
+      text-decoration:none;
+    }
 
-/* ✅ MOBILE FIXES (this is the important part) */
-@media(max-width:768px){
-  body{
-    background-attachment:scroll;
+    /* GRID */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+      margin-top: 26px; /* pushes cards down a bit on web */
+    }
 
-    /* KEY CHANGE:
-       Move the image DOWN so the drone logo area isn't behind the tabs. */
-    background-position:center 90%;
-  }
+    .card{
+      grid-column: span 12;
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
 
-  /* Slightly tighter hero blocks so they don't eat the whole screen */
-  .pill{
-    font-size:13px;
-    padding:10px 16px;
-  }
-  .subbar{
-    font-size:14px;
-    padding:12px 14px;
-  }
+    .card h2{
+      margin: 0 0 10px;
+      font-size: 18px;
+      letter-spacing: 0.2px;
+    }
 
-  /* Make the tabs smaller + nicer layout */
-  .btn{
-    padding:9px 12px;
-    font-size:13px;
-    border-radius:12px;
-  }
-  .cta-row{
-    gap:8px;
-  }
+    .muted{ color: var(--muted); }
+    ul{ margin: 10px 0 0; padding-left: 18px; }
+    li{ margin: 7px 0; }
 
-  /* Cards start much lower so the drone can be seen */
-  .grid{
-    margin-top:var(--mobile-gap);
-  }
-}
+    .timeline{
+      list-style:none;
+      padding:0;
+      margin: 10px 0 0;
+    }
+    .timeline li{
+      border-left: 2px solid rgba(125,211,252,0.55);
+      padding-left: 12px;
+      margin: 12px 0;
+    }
+    .tag{
+      display:inline-block;
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(0,0,0,0.22);
+      color: var(--muted);
+      margin-left: 8px;
+    }
 
-footer{
-  margin-top:26px;
-  text-align:center;
-  font-size:13px;
-  color:rgba(255,255,255,.85);
-}
-</style>
+    .email-link{
+      color: rgba(238,242,247,0.96);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .email-link:hover{ color: var(--accent); }
+
+    footer{
+      margin-top: 18px;
+      padding: 16px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      text-align:center;
+      text-shadow: 0 6px 18px rgba(0,0,0,0.55);
+    }
+
+    /* 2 columns on wide screens */
+    @media(min-width: 900px){
+      .span-6{ grid-column: span 6; }
+      .card{ padding: 20px; }
+    }
+
+    /* MOBILE FIXES */
+    @media(max-width: 768px){
+      body{
+        background-attachment: scroll;
+
+        /* keep drone logo centered-ish but allow top content room */
+        background-position: center 55%;
+      }
+
+      .wrap{
+        padding: 16px 14px 40px;
+      }
+
+      /* remove big title if you want drone branding to carry it */
+      h1{
+        font-size: 0px;
+        margin: 0;
+        height: 0;
+        overflow: hidden;
+      }
+
+      .pill{
+        font-size: 13px;
+        padding: 12px 14px;
+        letter-spacing: 0.06em;
+      }
+
+      .sub{
+        font-size: 16px;
+        padding: 14px 14px;
+      }
+
+      /* KEY CHANGE: buttons are up in the sky, not on the drone */
+      .cta-row{
+        margin-top: 12px;
+        gap: 10px;
+      }
+
+      .btn{
+        padding: 12px 14px;
+        font-size: 14px;
+        border-radius: 14px;
+      }
+
+      /* cards start lower so the drone logo has space */
+      .grid{
+        margin-top: 22px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-<div class="wrap">
+  <div class="wrap">
 
-<section class="top">
-  <div class="pill"><span class="dot"></span> Coming Soon to the North Country • FAA Part 107 • Veteran-Owned</div>
+    <section class="top">
+      <div class="pill"><span class="dot"></span> Coming Soon to the North Country • FAA Part 107 • Veteran-Owned</div>
 
-  <h1 class="sr-only">Frontline Drone & Aerial Services</h1>
+      <!-- OPTIONAL: keeping title hidden on mobile, visible on desktop -->
+      <h1>Frontline Drone & Aerial Services</h1>
 
-  <div class="subbar">
-    Professional aerial media & documentation serving Jefferson County, NY and surrounding areas.
-    Services begin once final setup, approvals, and insurance are completed.
+      <!-- IMPORTANT: Buttons are ABOVE the description now (so they don’t cover drone logo on mobile) -->
+      <div class="cta-row">
+        <a class="btn" href="#services">Planned Services</a>
+        <a class="btn" href="#upcoming">Upcoming Capabilities</a>
+        <a class="btn" href="#timeline">Timeline</a>
+        <a class="btn" href="mailto:info.frontlinedroneaerial@gmail.com">Email</a>
+      </div>
+
+      <p class="sub">
+        Professional aerial media & documentation serving Jefferson County, NY and surrounding areas.
+        Services begin once final setup, approvals, and insurance are completed.
+      </p>
+    </section>
+
+    <div class="grid">
+
+      <section id="services" class="card span-6">
+        <h2>Planned Initial Services</h2>
+        <p class="muted">Clean visuals, safe operations, and clear communication.</p>
+        <ul>
+          <li>Aerial photography & video</li>
+          <li>Real estate photography & walkthrough video</li>
+          <li>Event and outdoor activity coverage</li>
+          <li>Promotional & social media visuals</li>
+          <li>Property documentation <span class="muted">(visual only)</span></li>
+        </ul>
+        <p class="muted" style="margin-top:12px;">
+          Visual documentation only. Not a substitute for licensed inspection or engineering services.
+        </p>
+      </section>
+
+      <section class="card span-6">
+        <h2>What you can expect</h2>
+        <ul>
+          <li>Clear communication & expectations</li>
+          <li>Organized delivery (labeled folders/files)</li>
+          <li>Basic editing options available</li>
+          <li>Compliance-first flight planning</li>
+        </ul>
+      </section>
+
+      <section id="upcoming" class="card">
+        <h2>Upcoming Capabilities</h2>
+        <p class="muted">Planned as equipment, approvals, and insurance finalize.</p>
+        <ul>
+          <li>Thermal imaging <span class="muted">(visual data capture only)</span></li>
+          <li>Mapping & site visualization</li>
+          <li>Advanced property documentation workflows</li>
+          <li>Planning & reference data capture <span class="muted">(non-engineering)</span></li>
+        </ul>
+      </section>
+
+      <section id="timeline" class="card">
+        <h2>Launch timeline</h2>
+        <ul class="timeline">
+          <li><strong>Phase 1</strong><span class="tag">Now</span> — Website live, intake email active, portfolio development</li>
+          <li><strong>Phase 2</strong><span class="tag">Next</span> — Sample galleries & service packages</li>
+          <li><strong>Phase 3</strong><span class="tag">Soon</span> — Scheduling & expanded capabilities</li>
+        </ul>
+      </section>
+
+      <section class="card span-6">
+        <h2>Service area</h2>
+        <p>Jefferson County, NY and surrounding areas.</p>
+        <p class="muted">Projects outside the area may be considered case-by-case.</p>
+      </section>
+
+      <section class="card span-6">
+        <h2>Contact</h2>
+        <p><strong>Email:</strong> <a class="email-link" href="mailto:info.frontlinedroneaerial@gmail.com">info.frontlinedroneaerial@gmail.com</a></p>
+        <p class="muted">Include location, desired date, and deliverables (photos, video, or both).</p>
+      </section>
+
+      <section class="card">
+        <h2>Compliance note</h2>
+        <p class="muted">
+          Flights are planned and conducted in accordance with FAA regulations and local airspace requirements.
+          Operations that require additional authorization (e.g., certain controlled airspace or specific waivers) are performed only when approved.
+        </p>
+      </section>
+
+    </div>
+
+    <footer>
+      © <span id="y"></span> Frontline Drone & Aerial Services • Built on GitHub Pages
+    </footer>
+
   </div>
 
-  <div class="cta-row">
-    <a class="btn" href="#services">Planned Services</a>
-    <a class="btn" href="#upcoming">Upcoming Capabilities</a>
-    <a class="btn" href="#timeline">Timeline</a>
-    <a class="btn" href="mailto:info.frontlinedroneaerial@gmail.com">Email</a>
-  </div>
-</section>
-
-<div class="grid">
-
-  <section id="services" class="card span-6">
-    <h2>Planned Initial Services</h2>
-    <ul>
-      <li>Aerial photography & video</li>
-      <li>Real estate photography & walkthrough video</li>
-      <li>Event & outdoor activity coverage</li>
-      <li>Promotional & social media visuals</li>
-      <li>Property documentation (visual only)</li>
-    </ul>
-    <p class="muted" style="margin-top:12px;">
-      Visual documentation only. Not a substitute for licensed inspection or engineering services.
-    </p>
-  </section>
-
-  <section class="card span-6">
-    <h2>What you can expect</h2>
-    <ul>
-      <li>Clear communication & expectations</li>
-      <li>Organized delivery (labeled folders/files)</li>
-      <li>Basic editing options available</li>
-      <li>Compliance-first flight planning</li>
-    </ul>
-  </section>
-
-  <section id="upcoming" class="card">
-    <h2>Upcoming Capabilities</h2>
-    <p class="muted">Planned as equipment, approvals, and insurance finalize.</p>
-    <ul>
-      <li>Thermal imaging (visual data capture only)</li>
-      <li>Mapping & site visualization</li>
-      <li>Advanced property documentation workflows</li>
-      <li>Planning & reference data capture (non-engineering)</li>
-    </ul>
-  </section>
-
-  <section id="timeline" class="card">
-    <h2>Launch Timeline</h2>
-    <ul class="timeline">
-      <li><strong>Phase 1</strong><span class="tag">Now</span> — Website live, portfolio building</li>
-      <li><strong>Phase 2</strong><span class="tag">Next</span> — Sample galleries & packages</li>
-      <li><strong>Phase 3</strong><span class="tag">Soon</span> — Scheduling & expanded capabilities</li>
-    </ul>
-  </section>
-
-  <section class="card span-6">
-    <h2>Service Area</h2>
-    <p>Jefferson County, NY and surrounding areas.</p>
-  </section>
-
-  <section class="card span-6">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:info.frontlinedroneaerial@gmail.com">info.frontlinedroneaerial@gmail.com</a></p>
-  </section>
-
-  <section class="card">
-    <h2>Compliance Note</h2>
-    <p class="muted">
-      All operations are conducted in accordance with FAA regulations and applicable airspace authorizations.
-    </p>
-  </section>
-
-</div>
-
-<footer>
-  © <span id="y"></span> Frontline Drone & Aerial Services • Built on GitHub Pages
-</footer>
-
-</div>
-
-<script>
-document.getElementById("y").textContent = new Date().getFullYear();
-</script>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
 
