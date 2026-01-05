@@ -141,25 +141,24 @@
     }
 
     /* ✅ Bigger + lower Professional block */
-    .sub{
-      margin: 0 auto;
-      max-width: 980px;                 /* wider */
-      color: rgba(238,242,247,0.95);     /* slightly brighter */
-      font-size: 24px;                  /* bigger */
-      line-height: 1.5;
+   .sub{
+  margin: 0 auto;
+  margin-bottom: 140px;   /* 👈 ADD THIS */
+  max-width: 980px;
+  color: rgba(238,242,247,0.95);
+  font-size: 24px;
+  line-height: 1.5;
+  text-shadow: 0 6px 24px rgba(0,0,0,0.55);
+  background: rgba(0,0,0,0.33);
+  border: 1px solid rgba(255,255,255,0.20);
+  border-radius: 18px;
+  padding: 28px 28px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.24);
+  transform: translateY(var(--subShift-desktop));
+}
 
-      text-shadow: 0 6px 24px rgba(0,0,0,0.55);
-
-      background: rgba(0,0,0,0.33);     /* darker for readability */
-      border: 1px solid rgba(255,255,255,0.20);
-      border-radius: 18px;
-      padding: 28px 28px;              /* bigger padding */
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 14px 30px rgba(0,0,0,0.24);
-
-      transform: translateY(var(--subShift-desktop));
-    }
 
     .grid{
       display:grid;
