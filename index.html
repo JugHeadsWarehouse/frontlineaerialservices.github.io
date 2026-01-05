@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
 <title>Frontline Drone & Aerial Services</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Veteran-owned, FAA Part 107 compliant drone services. Professional aerial media and documentation launching soon in Jefferson County, NY.">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Veteran-owned, FAA Part 107 compliant aerial services serving Jefferson County, NY." />
 
 <style>
 :root{
-  --text:#eef2f7;
-  --muted:rgba(238,242,247,.82);
-  --card:rgba(15,23,42,.55);
-  --border:rgba(255,255,255,.18);
+  --text:#f8fafc;
+  --muted:rgba(248,250,252,0.85);
+  --card:rgba(15,23,42,0.42);
+  --border:rgba(255,255,255,0.22);
   --accent:#7dd3fc;
-  --shadow:0 18px 40px rgba(0,0,0,.45);
-  --radius:18px;
+  --radius:20px;
 }
 
 *{box-sizing:border-box}
-html,body{height:100%}
+html,body{margin:0;height:100%}
+
 body{
-  margin:0;
   font-family:Arial,Helvetica,sans-serif;
   color:var(--text);
-  background:url("hero.png") center top / cover no-repeat fixed;
-  line-height:1.55;
+  background:url("hero.png") center / cover no-repeat fixed;
+  line-height:1.6;
+  position:relative;
 }
 
 /* readability overlay */
@@ -34,142 +34,134 @@ body::before{
   inset:0;
   background:linear-gradient(
     180deg,
-    rgba(0,0,0,.25),
-    rgba(0,0,0,.60)
+    rgba(0,0,0,0.15),
+    rgba(0,0,0,0.35)
   );
   z-index:0;
 }
-body::after{
-  content:"";
-  position:fixed;
-  inset:0;
-  box-shadow:inset 0 0 110px rgba(0,0,0,.45);
-  z-index:0;
-}
-
-a{color:var(--accent);text-decoration:none}
-a:hover{text-decoration:underline}
 
 .wrap{
+  max-width:1100px;
+  margin:auto;
+  padding:32px 18px 48px;
   position:relative;
   z-index:1;
-  max-width:1100px;
-  margin:0 auto;
-  padding:20px 18px 48px;
 }
 
-/* HERO */
-.top{
+.hero{
   text-align:center;
-  margin-top:8px; /* pushes content upward */
-  margin-bottom:18px;
+  padding:24px 16px 18px;
 }
 
-.pill{
+.coming{
   display:inline-flex;
   align-items:center;
   gap:10px;
-  padding:8px 14px;
+  padding:10px 18px;
+  font-size:15px;
+  font-weight:600;
   border-radius:999px;
-  background:rgba(0,0,0,.40);
-  border:1px solid rgba(255,255,255,.2);
-  color:var(--muted);
-  font-size:14px;
-  backdrop-filter:blur(8px);
+  background:rgba(0,0,0,0.45);
+  border:1px solid var(--border);
+  backdrop-filter:blur(10px);
 }
-.dot{
-  width:8px;height:8px;border-radius:50%;
+
+.coming span{
+  width:9px;
+  height:9px;
   background:#22c55e;
-  box-shadow:0 0 0 4px rgba(34,197,94,.15);
+  border-radius:50%;
+  box-shadow:0 0 0 4px rgba(34,197,94,.2);
 }
 
 h1{
-  margin:14px 0 10px;
-  font-size:clamp(34px,4.2vw,56px);
-  text-shadow:0 8px 30px rgba(0,0,0,.65);
+  margin:18px 0 10px;
+  font-size:clamp(38px,4.5vw,58px);
+  text-shadow:0 10px 30px rgba(0,0,0,.55);
 }
 
-.sub{
-  max-width:880px;
-  margin:0 auto;
+.hero p{
+  max-width:900px;
+  margin:auto;
+  font-size:18px;
   color:var(--muted);
-  text-shadow:0 6px 24px rgba(0,0,0,.6);
+  text-shadow:0 6px 20px rgba(0,0,0,.5);
 }
 
-/* buttons */
-.cta-row{
-  margin-top:16px;
+.nav{
+  margin-top:18px;
   display:flex;
   justify-content:center;
-  gap:10px;
+  gap:12px;
   flex-wrap:wrap;
 }
-.btn{
-  padding:10px 14px;
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,.22);
-  background:rgba(15,23,42,.45);
-  color:var(--text);
-  backdrop-filter:blur(10px);
-  box-shadow:0 10px 22px rgba(0,0,0,.25);
-}
-.btn:hover{background:rgba(15,23,42,.65)}
 
-/* GRID */
+.nav a{
+  padding:10px 16px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  background:rgba(15,23,42,.5);
+  color:var(--text);
+  text-decoration:none;
+  backdrop-filter:blur(10px);
+}
+
+.nav a:hover{background:rgba(15,23,42,.65)}
+
 .grid{
   display:grid;
   grid-template-columns:repeat(12,1fr);
-  gap:14px;
-  margin-top:18px;
+  gap:16px;
+  margin-top:24px;
 }
 
 .card{
   grid-column:span 12;
-  border:1px solid var(--border);
   background:var(--card);
+  border:1px solid var(--border);
   border-radius:var(--radius);
-  padding:18px;
-  box-shadow:var(--shadow);
-  backdrop-filter:blur(10px);
+  padding:22px;
+  backdrop-filter:blur(12px);
 }
 
 .card h2{
   margin:0 0 10px;
-  font-size:18px;
+  font-size:20px;
 }
 
+ul{padding-left:18px;margin:10px 0}
+li{margin:8px 0}
+
 .muted{color:var(--muted)}
-ul{margin:10px 0 0;padding-left:18px}
-li{margin:7px 0}
 
 .timeline{
   list-style:none;
   padding:0;
-  margin:10px 0 0;
 }
+
 .timeline li{
-  border-left:2px solid rgba(125,211,252,.6);
+  border-left:2px solid var(--accent);
   padding-left:12px;
-  margin:12px 0;
+  margin:14px 0;
 }
 
 .tag{
+  margin-left:10px;
   font-size:12px;
   padding:4px 10px;
   border-radius:999px;
-  border:1px solid rgba(255,255,255,.18);
-  background:rgba(0,0,0,.25);
-  margin-left:8px;
+  background:rgba(0,0,0,.35);
+  border:1px solid var(--border);
 }
 
 footer{
-  margin-top:18px;
+  margin-top:28px;
   text-align:center;
-  font-size:13px;
+  font-size:14px;
   color:var(--muted);
-  text-shadow:0 6px 18px rgba(0,0,0,.6);
 }
 
+/* desktop */
 @media(min-width:900px){
   .span-6{grid-column:span 6}
 }
@@ -179,99 +171,90 @@ footer{
 <body>
 <div class="wrap">
 
-<section class="top">
-  <div class="pill">
-    <span class="dot"></span>
-    Coming Soon to the North Country • FAA Part 107 • Veteran-Owned
-  </div>
-
+<section class="hero">
+  <div class="coming"><span></span> Coming Soon to the North Country • FAA Part 107 • Veteran-Owned</div>
   <h1>Frontline Drone & Aerial Services</h1>
-
-  <p class="sub">
+  <p>
     Professional aerial media and documentation serving Jefferson County, NY and surrounding areas.
     Services will begin once final setup, approvals, and insurance are completed.
   </p>
 
-  <div class="cta-row">
-    <a class="btn" href="#planned">Planned Services</a>
-    <a class="btn" href="#upcoming">Upcoming Capabilities</a>
-    <a class="btn" href="#timeline">Timeline</a>
-    <a class="btn" href="mailto:info.frontlinedroneaerial@gmail.com">Email</a>
+  <div class="nav">
+    <a href="#services">Planned Services</a>
+    <a href="#upcoming">Upcoming Capabilities</a>
+    <a href="#timeline">Timeline</a>
+    <a href="mailto:info.frontlinedroneaerial@gmail.com">Email</a>
   </div>
 </section>
 
 <div class="grid">
 
-<section id="planned" class="card span-6">
-<h2>Planned Initial Services</h2>
-<ul>
-<li>Aerial photography & video</li>
-<li>Real estate photography & walkthrough video</li>
-<li>Event and outdoor activity coverage</li>
-<li>Promotional & social media visuals</li>
-<li>Property documentation <span class="muted">(visual only)</span></li>
-</ul>
-<p class="muted" style="margin-top:12px">
-Visual documentation only. Not a substitute for licensed inspection or engineering services.
-</p>
+<section id="services" class="card span-6">
+  <h2>Planned Initial Services</h2>
+  <ul>
+    <li>Aerial photography & video</li>
+    <li>Real estate photography & walkthrough video</li>
+    <li>Event and outdoor activity coverage</li>
+    <li>Promotional & social media visuals</li>
+    <li>Property documentation <span class="muted">(visual only)</span></li>
+  </ul>
+  <p class="muted">
+    Visual documentation only. Not a substitute for licensed inspection or engineering services.
+  </p>
 </section>
 
 <section class="card span-6">
-<h2>What you can expect</h2>
-<ul>
-<li>Clear communication & expectations</li>
-<li>Organized delivery (labeled folders/files)</li>
-<li>Basic editing options available</li>
-<li>Compliance-first flight planning</li>
-</ul>
+  <h2>What you can expect</h2>
+  <ul>
+    <li>Clear communication & expectations</li>
+    <li>Organized delivery (labeled folders/files)</li>
+    <li>Basic editing options available</li>
+    <li>Compliance-first flight planning</li>
+  </ul>
 </section>
 
 <section id="upcoming" class="card">
-<h2>Upcoming Capabilities</h2>
-<p class="muted">
-Planned as equipment, approvals, and insurance finalize.
-</p>
-<ul>
-<li>Thermal imaging <span class="muted">(visual data capture only)</span></li>
-<li>Mapping & site visualization</li>
-<li>Advanced property documentation workflows</li>
-<li>Planning & reference data capture <span class="muted">(non-engineering)</span></li>
-</ul>
+  <h2>Upcoming Capabilities</h2>
+  <p class="muted">Planned as equipment, approvals, and insurance finalize.</p>
+  <ul>
+    <li>Thermal imaging <span class="muted">(visual data capture only)</span></li>
+    <li>Mapping & site visualization</li>
+    <li>Advanced property documentation workflows</li>
+    <li>Planning & reference data capture <span class="muted">(non-engineering)</span></li>
+  </ul>
 </section>
 
 <section id="timeline" class="card">
-<h2>Launch timeline</h2>
-<ul class="timeline">
-<li><strong>Phase 1</strong><span class="tag">Current</span> — Website live, email intake active</li>
-<li><strong>Phase 2</strong><span class="tag">Next</span> — Sample galleries & service packages</li>
-<li><strong>Phase 3</strong><span class="tag">Soon</span> — Scheduling & expanded capabilities</li>
-</ul>
+  <h2>Launch Timeline</h2>
+  <ul class="timeline">
+    <li><strong>Phase 1</strong><span class="tag">Now</span> — Website live, portfolio building</li>
+    <li><strong>Phase 2</strong><span class="tag">Next</span> — Sample galleries & packages</li>
+    <li><strong>Phase 3</strong><span class="tag">Soon</span> — Scheduling & expanded capabilities</li>
+  </ul>
 </section>
 
 <section class="card span-6">
-<h2>Service area</h2>
-<p>Jefferson County, NY and surrounding areas.</p>
-<p class="muted">Projects outside the area may be considered case-by-case.</p>
+  <h2>Service Area</h2>
+  <p>Jefferson County, NY and surrounding areas.</p>
 </section>
 
 <section class="card span-6">
-<h2>Contact</h2>
-<p><strong>Email:</strong> <a href="mailto:info.frontlinedroneaerial@gmail.com">info.frontlinedroneaerial@gmail.com</a></p>
-<p class="muted">Include location, desired date, and deliverables.</p>
+  <h2>Contact</h2>
+  <p>Email: <a href="mailto:info.frontlinedroneaerial@gmail.com">info.frontlinedroneaerial@gmail.com</a></p>
 </section>
 
 <section class="card">
-<h2>Compliance note</h2>
-<p class="muted">
-All operations conducted in accordance with FAA regulations.
-No flights over people or active traffic without proper authorization.
-</p>
+  <h2>Compliance Note</h2>
+  <p class="muted">
+    All operations are conducted in accordance with FAA regulations.
+    No flights over people or active traffic without proper authorization.
+  </p>
 </section>
 
 </div>
 
 <footer>
-© <span id="year"></span> Frontline Drone & Aerial Services • Built on GitHub Pages
+  © <span id="year"></span> Frontline Drone & Aerial Services • Built on GitHub Pages
 </footer>
 
 </div>
