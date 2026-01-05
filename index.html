@@ -4,21 +4,14 @@
   <meta charset="UTF-8" />
   <title>Frontline Drone & Aerial Services</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="Veteran-owned, FAA Part 107 compliant aerial services providing professional drone media and documentation."
-  />
+  <meta name="description" content="Veteran-owned, FAA Part 107 compliant aerial services providing professional drone media and documentation." />
 
   <style>
     :root{
       --text:#eef2f7;
       --muted: rgba(238,242,247,0.86);
-
-      /* glass */
       --card: rgba(15, 23, 42, 0.60);
-      --card-strong: rgba(15, 23, 42, 0.72);
       --border: rgba(255,255,255,0.18);
-
       --accent:#7dd3fc;
       --shadow: 0 18px 40px rgba(0,0,0,0.45);
       --radius: 18px;
@@ -34,16 +27,15 @@
       line-height: 1.55;
 
       /* BACKGROUND IMAGE */
-      background: url("hero.png") center center / cover no-repeat fixed;
+      background: url("hero.png") center 40% / cover no-repeat fixed;
       position: relative;
     }
 
-    /* Global overlay (keeps text readable but still shows image) */
     body::before{
       content:"";
       position: fixed;
       inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.52));
+      background: linear-gradient(180deg, rgba(0,0,0,0.14), rgba(0,0,0,0.44));
       pointer-events:none;
       z-index:0;
     }
@@ -52,7 +44,7 @@
       content:"";
       position: fixed;
       inset: 0;
-      box-shadow: inset 0 0 90px rgba(0,0,0,0.35);
+      box-shadow: inset 0 0 90px rgba(0,0,0,0.28);
       pointer-events:none;
       z-index:0;
     }
@@ -65,32 +57,38 @@
       z-index: 1;
       max-width: 1100px;
       margin: 0 auto;
-      padding: 22px 18px 46px;
+      padding: 18px 18px 46px;
     }
 
-    /* HERO */
     .top{
       text-align:center;
-      padding: 22px 16px 10px;
-      margin-bottom: 10px;
+      padding: 18px 16px 0;
+
+      /* Reserve hero space for drone/logo behind */
+      min-height: clamp(420px, 58vh, 620px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 12px;
     }
 
     .pill{
       display:inline-flex;
       gap:12px;
       align-items:center;
-      padding: 12px 18px;              /* bigger */
+      padding: 12px 18px;
       border-radius: 999px;
-      background: rgba(0,0,0,0.42);
+      background: rgba(0,0,0,0.40);
       border: 1px solid rgba(255,255,255,0.22);
       color: rgba(238,242,247,0.92);
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 12px 26px rgba(0,0,0,0.30);
+      box-shadow: 0 12px 26px rgba(0,0,0,0.26);
     }
 
     .dot{
@@ -100,34 +98,15 @@
       flex: 0 0 auto;
     }
 
-    /* Title is optional now — keep small and subtle (since drone has branding) */
     h1{
-      margin: 14px 0 6px;
-      font-size: clamp(28px, 3.8vw, 44px);
+      margin: 0;
+      font-size: clamp(26px, 3.6vw, 44px);
       letter-spacing: 0.2px;
-      text-shadow: 0 10px 34px rgba(0,0,0,0.60);
+      text-shadow: 0 10px 34px rgba(0,0,0,0.55);
     }
 
-    .sub{
-      margin: 10px auto 0;
-      max-width: 880px;
-      color: var(--muted);
-      font-size: 16px;
-      text-shadow: 0 6px 24px rgba(0,0,0,0.55);
-
-      /* make it look premium */
-      background: rgba(0,0,0,0.30);
-      border: 1px solid rgba(255,255,255,0.18);
-      border-radius: 16px;
-      padding: 14px 14px;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 14px 30px rgba(0,0,0,0.28);
-    }
-
-    /* Buttons */
     .cta-row{
-      margin-top: 14px;
+      margin-top: 2px;
       display:flex;
       justify-content:center;
       gap:10px;
@@ -143,8 +122,8 @@
       color: var(--text);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 10px 22px rgba(0,0,0,0.25);
-      font-weight: 700;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.22);
+      font-weight: 800;
       font-size: 14px;
     }
     .btn:hover{
@@ -152,12 +131,29 @@
       text-decoration:none;
     }
 
-    /* GRID */
+    .sub{
+      margin: 0 auto;
+      max-width: 900px;
+      color: var(--muted);
+      font-size: 16px;
+      text-shadow: 0 6px 24px rgba(0,0,0,0.45);
+
+      background: rgba(0,0,0,0.26);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 16px;
+      padding: 14px 14px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.22);
+    }
+
     .grid{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
       gap: 14px;
-      margin-top: 26px; /* pushes cards down a bit on web */
+
+      /* Push cards down below drone/logo area */
+      margin-top: clamp(140px, 18vh, 230px);
     }
 
     .card{
@@ -215,34 +211,36 @@
       color: var(--muted);
       font-size: 13px;
       text-align:center;
-      text-shadow: 0 6px 18px rgba(0,0,0,0.55);
+      text-shadow: 0 6px 18px rgba(0,0,0,0.45);
     }
 
-    /* 2 columns on wide screens */
     @media(min-width: 900px){
       .span-6{ grid-column: span 6; }
       .card{ padding: 20px; }
     }
 
-    /* MOBILE FIXES */
+    /* MOBILE TUNING */
     @media(max-width: 768px){
       body{
         background-attachment: scroll;
 
-        /* keep drone logo centered-ish but allow top content room */
-        background-position: center 55%;
+        /* Nudge drone slightly DOWN in the visible area */
+        background-position: center 56%;
       }
 
       .wrap{
-        padding: 16px 14px 40px;
+        padding: 14px 14px 40px;
       }
 
-      /* remove big title if you want drone branding to carry it */
+      .top{
+        min-height: 560px; /* a bit taller to give breathing room */
+        gap: 12px;
+      }
+
+      /* Keep the title (you said web looks good; mobile can keep it too) */
       h1{
-        font-size: 0px;
-        margin: 0;
-        height: 0;
-        overflow: hidden;
+        font-size: 30px;
+        line-height: 1.15;
       }
 
       .pill{
@@ -251,26 +249,26 @@
         letter-spacing: 0.06em;
       }
 
-      .sub{
-        font-size: 16px;
-        padding: 14px 14px;
+      /* --- THE FIX YOU ASKED FOR --- */
+      .cta-row{
+        margin-top: 6px;
+        margin-bottom: 18px; /* GAP between tabs and professional/description box */
       }
 
-      /* KEY CHANGE: buttons are up in the sky, not on the drone */
-      .cta-row{
-        margin-top: 12px;
-        gap: 10px;
+      .sub{
+        margin-top: 6px;     /* extra separation below tabs */
+        font-size: 16px;
+        padding: 14px 14px;
       }
 
       .btn{
         padding: 12px 14px;
         font-size: 14px;
-        border-radius: 14px;
       }
 
-      /* cards start lower so the drone logo has space */
+      /* Push cards further down so hero stays clean on mobile */
       .grid{
-        margin-top: 22px;
+        margin-top: 260px;
       }
     }
   </style>
@@ -282,10 +280,8 @@
     <section class="top">
       <div class="pill"><span class="dot"></span> Coming Soon to the North Country • FAA Part 107 • Veteran-Owned</div>
 
-      <!-- OPTIONAL: keeping title hidden on mobile, visible on desktop -->
       <h1>Frontline Drone & Aerial Services</h1>
 
-      <!-- IMPORTANT: Buttons are ABOVE the description now (so they don’t cover drone logo on mobile) -->
       <div class="cta-row">
         <a class="btn" href="#services">Planned Services</a>
         <a class="btn" href="#upcoming">Upcoming Capabilities</a>
@@ -362,7 +358,7 @@
         <h2>Compliance note</h2>
         <p class="muted">
           Flights are planned and conducted in accordance with FAA regulations and local airspace requirements.
-          Operations that require additional authorization (e.g., certain controlled airspace or specific waivers) are performed only when approved.
+          Operations requiring additional authorization are performed only when approved.
         </p>
       </section>
 
