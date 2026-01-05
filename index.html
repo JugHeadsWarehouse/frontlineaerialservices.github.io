@@ -43,7 +43,11 @@
       font-family: Arial, Helvetica, sans-serif;
       color: var(--text);
       line-height: 1.55;
-      background: url("hero.png") center 30% / cover no-repeat fixed;
+     background-image: url("hero.png");
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center 30%;   /* desktop position */
+background-attachment: fixed;
       position: relative;
     }
 
@@ -230,19 +234,12 @@
       .card{ padding: 20px; }
     }
 
-   @media(max-width: 768px){
+   @media (max-width: 768px){
   body{
-    /* Mobile-only background override (this WILL change the image position) */
-    background: url("hero.png") center 22% / cover no-repeat scroll !important;
+    background-attachment: scroll;
+    background-position: center 18% !important; /* LOWER % = drone moves DOWN */
   }
-
-  .wrap{ padding: 14px 14px 40px; }
-
-  .pill{
-    font-size: 12.8px;
-    padding: 11px 14px;
-    letter-spacing: 0.06em;
-  }
+}
 
   .cta-row{ gap: 8px; margin-top: 4px; }
 
