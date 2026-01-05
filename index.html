@@ -9,9 +9,9 @@
   <style>
     :root{
       --text:#eef2f7;
-      --muted: rgba(238,242,247,0.86);
-      --card: rgba(12, 18, 30, 0.78);     /* darker card for readability */
-      --border: rgba(255,255,255,0.10);
+      --muted: rgba(238,242,247,0.82);
+      --card: rgba(15, 23, 42, 0.58);
+      --border: rgba(255,255,255,0.18);
       --accent:#7dd3fc;
       --shadow: 0 18px 40px rgba(0,0,0,0.45);
       --radius: 18px;
@@ -24,22 +24,20 @@
       margin:0;
       font-family: Arial, Helvetica, sans-serif;
       color: var(--text);
-
-      /* FULL PAGE BACKGROUND IMAGE */
       background: url("hero.png") center center / cover no-repeat fixed;
       position: relative;
       line-height: 1.55;
     }
 
-    /* Background overlay: lighter so image shows */
+    /* global overlay for readability */
     body::before{
       content:"";
       position: fixed;
       inset: 0;
       background: linear-gradient(
         180deg,
-        rgba(0,0,0,0.18),
-        rgba(0,0,0,0.38)
+        rgba(0,0,0,0.25),
+        rgba(0,0,0,0.42)
       );
       pointer-events:none;
       z-index:0;
@@ -50,7 +48,7 @@
       content:"";
       position: fixed;
       inset: 0;
-      box-shadow: inset 0 0 110px rgba(0,0,0,0.30);
+      box-shadow: inset 0 0 90px rgba(0,0,0,0.35);
       pointer-events:none;
       z-index:0;
     }
@@ -66,17 +64,18 @@
       padding: 26px 18px 46px;
     }
 
-    /* Top hero area gets its own readability layer */
+    /* HERO PANEL */
     .top{
       text-align:center;
-      padding: 22px 16px 18px;
-      margin-bottom: 16px;
+      padding: 26px 22px 22px;
+      margin: 24px auto 22px;
+      max-width: 920px;
       border-radius: 22px;
-      background: rgba(0,0,0,0.28);
-      border: 1px solid rgba(255,255,255,0.10);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      box-shadow: 0 14px 34px rgba(0,0,0,0.28);
+      background: rgba(8, 14, 28, 0.65);
+      border: 1px solid rgba(255,255,255,0.18);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 22px 50px rgba(0,0,0,0.55);
     }
 
     .pill{
@@ -85,33 +84,33 @@
       align-items:center;
       padding: 8px 14px;
       border-radius: 999px;
-      background: rgba(0,0,0,0.30);
-      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.20);
       color: var(--muted);
       font-size: 14px;
       backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
     }
 
     .dot{
-      width:8px; height:8px; border-radius:50%;
+      width:8px;
+      height:8px;
+      border-radius:50%;
       background:#22c55e;
-      box-shadow: 0 0 0 4px rgba(34,197,94,0.14);
+      box-shadow: 0 0 0 4px rgba(34,197,94,0.12);
     }
 
     h1{
       margin: 14px 0 8px;
       font-size: clamp(34px, 4.2vw, 56px);
-      letter-spacing: 0.2px;
-      text-shadow: 0 10px 34px rgba(0,0,0,0.70);
+      text-shadow: 0 8px 30px rgba(0,0,0,0.65);
     }
 
     .sub{
-      margin: 0.5rem auto 0;
-      max-width: 860px;
+      margin: 0 auto;
+      max-width: 880px;
       color: var(--muted);
-      font-size: 16.5px;
-      text-shadow: 0 8px 26px rgba(0,0,0,0.65);
+      font-size: 16px;
+      text-shadow: 0 6px 24px rgba(0,0,0,0.55);
     }
 
     .cta-row{
@@ -123,20 +122,17 @@
     }
 
     .btn{
-      display:inline-block;
       padding: 10px 14px;
       border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.16);
-      background: rgba(12, 18, 30, 0.58);
+      border: 1px solid rgba(255,255,255,0.22);
+      background: rgba(15, 23, 42, 0.45);
       color: var(--text);
       backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
       box-shadow: 0 10px 22px rgba(0,0,0,0.25);
     }
 
     .btn:hover{
-      background: rgba(12, 18, 30, 0.72);
-      text-decoration:none;
+      background: rgba(15, 23, 42, 0.60);
     }
 
     /* GRID */
@@ -144,7 +140,7 @@
       display:grid;
       grid-template-columns: repeat(12, 1fr);
       gap: 14px;
-      margin-top: 16px;
+      margin-top: 18px;
     }
 
     .card{
@@ -154,14 +150,12 @@
       border-radius: var(--radius);
       padding: 18px;
       box-shadow: var(--shadow);
-      backdrop-filter: blur(7px);
-      -webkit-backdrop-filter: blur(7px);
+      backdrop-filter: blur(10px);
     }
 
     .card h2{
       margin: 0 0 10px;
       font-size: 18px;
-      letter-spacing: 0.2px;
     }
 
     .muted{ color: var(--muted); }
@@ -171,7 +165,6 @@
     .timeline{
       list-style:none;
       padding:0;
-      margin: 10px 0 0;
     }
 
     .timeline li{
@@ -181,29 +174,25 @@
     }
 
     .tag{
-      display:inline-block;
       font-size: 12px;
       padding: 4px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.16);
-      background: rgba(0,0,0,0.20);
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(0,0,0,0.22);
       color: var(--muted);
       margin-left: 8px;
     }
 
     footer{
       margin-top: 18px;
-      padding: 16px 0 0;
+      padding-top: 16px;
       color: var(--muted);
       font-size: 13px;
       text-align:center;
-      text-shadow: 0 6px 18px rgba(0,0,0,0.55);
     }
 
-    /* 2 columns on wide screens */
     @media(min-width: 900px){
       .span-6{ grid-column: span 6; }
-      .card{ padding: 20px; }
     }
   </style>
 </head>
@@ -212,11 +201,16 @@
   <div class="wrap">
 
     <section class="top">
-      <div class="pill"><span class="dot"></span> Coming Soon to the North Country • FAA Part 107 • Veteran-Owned</div>
+      <div class="pill">
+        <span class="dot"></span>
+        Coming Soon to the North Country • FAA Part 107 • Veteran-Owned
+      </div>
+
       <h1>Frontline Drone & Aerial Services</h1>
+
       <p class="sub">
         Professional aerial media & documentation — serving Jefferson County, NY and surrounding areas.
-        This page is live while final setup is completed and the service menu expands in phases.
+        This site is live while final setup is completed and services expand in phases.
       </p>
 
       <div class="cta-row">
@@ -230,8 +224,8 @@
     <div class="grid">
 
       <section id="services" class="card span-6">
-        <h2>Services at Launch</h2>
-        <p class="muted">Clean deliverables, safe operations, and professional communication.</p>
+        <h2>Initial Service Focus</h2>
+        <p class="muted">Professional visuals, safe operations, and clear communication.</p>
         <ul>
           <li>Aerial photos & video</li>
           <li>Real estate photography & walkthrough video</li>
@@ -239,9 +233,6 @@
           <li>Promotional & social media visuals</li>
           <li>Property documentation <span class="muted">(visual only)</span></li>
         </ul>
-        <p class="muted" style="margin-top:12px;">
-          Documentation is visual only and not a substitute for licensed inspection or engineering services.
-        </p>
       </section>
 
       <section class="card span-6">
@@ -256,37 +247,34 @@
 
       <section id="upcoming" class="card">
         <h2>Upcoming Capabilities</h2>
-        <p class="muted">
-          These capabilities are planned as equipment, approvals, and insurance are finalized.
-          Availability will expand in phases.
-        </p>
+        <p class="muted">Planned as equipment, approvals, and insurance finalize.</p>
         <ul>
           <li>Thermal imaging <span class="muted">(visual data capture only)</span></li>
           <li>Mapping & site visualization</li>
           <li>Advanced property documentation workflows</li>
-          <li>Data capture for planning and reference <span class="muted">(non-engineering)</span></li>
+          <li>Planning & reference data capture <span class="muted">(non-engineering)</span></li>
         </ul>
       </section>
 
       <section id="timeline" class="card">
         <h2>Launch timeline</h2>
         <ul class="timeline">
-          <li><strong>Phase 1</strong><span class="tag">Now</span> — Website live, intake email active, portfolio building</li>
-          <li><strong>Phase 2</strong><span class="tag">Next</span> — Sample galleries + service packages</li>
-          <li><strong>Phase 3</strong><span class="tag">Soon</span> — Scheduling form + expanded capabilities as approvals finalize</li>
+          <li><strong>Phase 1</strong><span class="tag">In Progress</span> — Website live, email intake active, portfolio building</li>
+          <li><strong>Phase 2</strong><span class="tag">Next</span> — Sample galleries & service packages</li>
+          <li><strong>Phase 3</strong><span class="tag">Soon</span> — Scheduling form & expanded capabilities</li>
         </ul>
       </section>
 
       <section class="card span-6">
         <h2>Service area</h2>
         <p>Jefferson County, NY and surrounding areas.</p>
-        <p class="muted">If you have a project outside the area, email the location and we’ll see what’s realistic.</p>
+        <p class="muted">Projects outside the area may be considered case-by-case.</p>
       </section>
 
       <section class="card span-6">
         <h2>Contact</h2>
         <p><strong>Email:</strong> <a href="mailto:info.frontlinedroneaerial@gmail.com">info.frontlinedroneaerial@gmail.com</a></p>
-        <p class="muted">Include: location, desired date, and what you want delivered (photos, video, or both).</p>
+        <p class="muted">Include location, desired date, and deliverables.</p>
       </section>
 
       <section class="card">
@@ -310,5 +298,6 @@
   </script>
 </body>
 </html>
+
 
 
