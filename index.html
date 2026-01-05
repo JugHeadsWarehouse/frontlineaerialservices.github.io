@@ -20,7 +20,6 @@
     *{ box-sizing:border-box; }
     html, body{ height:100%; }
 
-    /* Visually hidden (keeps SEO/accessibility without showing big title) */
     .sr-only{
       position:absolute!important;
       width:1px;height:1px;
@@ -35,8 +34,7 @@
       color: var(--text);
       line-height: 1.55;
 
-      /* BACKGROUND IMAGE */
-      background: url("hero.png") center 58% / cover no-repeat fixed;
+      background: url("hero.png") center 56% / cover no-repeat fixed;
       position: relative;
     }
 
@@ -74,7 +72,6 @@
       text-align:center;
       padding: 16px 16px 0;
 
-      /* Make hero tall enough so cards don’t intrude into the drone */
       min-height: clamp(560px, 78vh, 780px);
 
       display:flex;
@@ -136,6 +133,7 @@
       text-decoration:none;
     }
 
+    /* ✅ KEY FIX: push this block BELOW the drone camera */
     .sub{
       margin: 0 auto;
       max-width: 900px;
@@ -150,6 +148,10 @@
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       box-shadow: 0 14px 30px rgba(0,0,0,0.22);
+
+      /* pushes it down without affecting other elements */
+      margin-top: 84px;
+      transform: translateY(70px);
     }
 
     /* CONTENT GRID */
@@ -157,8 +159,6 @@
       display:grid;
       grid-template-columns: repeat(12, 1fr);
       gap: 14px;
-
-      /* Small normal spacing only — hero height does the heavy lifting */
       margin-top: 18px;
     }
 
@@ -229,8 +229,6 @@
     @media(max-width: 768px){
       body{
         background-attachment: scroll;
-
-        /* Move drone/logo lower so tabs + box don’t cover the drone text */
         background-position: center 74%;
       }
 
@@ -238,9 +236,8 @@
         padding: 14px 14px 40px;
       }
 
-      /* Enough hero height so cards don’t show while still in hero */
       .top{
-        min-height: 640px;
+        min-height: 690px; /* more room since sub is moved down */
         gap: 12px;
       }
 
@@ -250,9 +247,10 @@
         letter-spacing: 0.06em;
       }
 
+      /* ✅ KEY FIX: drop buttons slightly lower so Timeline/Email aren't on drone */
       .cta-row{
-        margin-top: 6px;
-        margin-bottom: 12px; /* gap between tabs and the description box */
+        margin-top: 10px;
+        transform: translateY(14px);
         gap: 10px;
       }
 
@@ -262,8 +260,10 @@
         border-radius: 14px;
       }
 
+      /* ✅ Push the professional block below the camera on mobile too */
       .sub{
-        margin-top: 0;
+        margin-top: 92px;
+        transform: translateY(92px);
         font-size: 15.5px;
         padding: 14px 12px;
         max-width: 92vw;
@@ -285,7 +285,6 @@
         Coming Soon to the North Country • FAA Part 107 Compliant • Veteran-Owned
       </div>
 
-      <!-- Keep an H1 for SEO/accessibility, but hide it visually -->
       <h1 class="sr-only">Frontline Drone & Aerial Services</h1>
 
       <div class="cta-row">
@@ -381,5 +380,4 @@
   </script>
 </body>
 </html>
-
 
