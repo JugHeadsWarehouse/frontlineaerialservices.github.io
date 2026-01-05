@@ -232,34 +232,33 @@
 
    @media(max-width: 768px){
   body{
+    /* Mobile-only background override (this WILL change the image position) */
     background: url("hero.png") center 22% / cover no-repeat scroll !important;
+  }
+
+  .wrap{ padding: 14px 14px 40px; }
+
+  .pill{
+    font-size: 12.8px;
+    padding: 11px 14px;
+    letter-spacing: 0.06em;
+  }
+
+  .cta-row{ gap: 8px; margin-top: 4px; }
+
+  .btn{
+    padding: 9px 11px;
+    font-size: 12.6px;
+  }
+
+  .sub{
+    max-width: 92vw;
+    font-size: 16.5px;
+    padding: 16px 14px;
+    transform: translateY(var(--subShift-mobile));
   }
 }
 
-
-      .wrap{ padding: 14px 14px 40px; }
-
-      .pill{
-        font-size: 12.8px;
-        padding: 11px 14px;
-        letter-spacing: 0.06em;
-      }
-
-      .cta-row{ gap: 8px; margin-top: 4px; }
-
-      .btn{
-        padding: 9px 11px;
-        font-size: 12.6px;
-      }
-
-      /* mobile: bigger AND lower */
-      .sub{
-        max-width: 92vw;
-        font-size: 16.5px;
-        padding: 16px 14px;
-        transform: translateY(var(--subShift-mobile));
-      }
-    }
   </style>
 </head>
 
