@@ -15,6 +15,11 @@
       --accent:#7dd3fc;
       --shadow: 0 18px 40px rgba(0,0,0,0.45);
       --radius: 18px;
+
+      /* ====== DIALS (DESKTOP) ====== */
+      --bgY-desktop: 52%;          /* lower number = drone sits LOWER (more sky at top) */
+      --subShift-desktop: 330px;   /* pushes "Professional..." down under camera */
+      --heroMin: clamp(820px, 96vh, 1040px);
     }
 
     *{ box-sizing:border-box; }
@@ -34,8 +39,8 @@
       color: var(--text);
       line-height: 1.55;
 
-      /* KEY: move drone DOWN on desktop so tabs are in “sky”, not on drone */
-      background: url("hero.png") center 66% / cover no-repeat fixed;
+      /* Controlled background position */
+      background: url("hero.png") center var(--bgY-desktop) / cover no-repeat fixed;
       position: relative;
     }
 
@@ -72,9 +77,7 @@
     .top{
       text-align:center;
       padding: 16px 16px 0;
-
-      /* KEY: more hero height so the sub can sit below camera */
-      min-height: clamp(740px, 90vh, 940px);
+      min-height: var(--heroMin);
 
       display:flex;
       flex-direction: column;
@@ -135,7 +138,7 @@
       text-decoration:none;
     }
 
-    /* KEY: move professional block BELOW the camera on desktop */
+    /* Professional block: use ONE controlled shift */
     .sub{
       margin: 0 auto;
       max-width: 900px;
@@ -151,9 +154,8 @@
       -webkit-backdrop-filter: blur(10px);
       box-shadow: 0 14px 30px rgba(0,0,0,0.22);
 
-      /* this is the money move for desktop */
-      margin-top: 110px;
-      transform: translateY(230px);
+      /* Drop BELOW camera */
+      transform: translateY(var(--subShift-desktop));
     }
 
     /* CONTENT GRID */
@@ -227,51 +229,46 @@
       .card{ padding: 20px; }
     }
 
-    /* MOBILE */
+    /* ===== MOBILE ===== */
     @media(max-width: 768px){
+      :root{
+        /* ====== DIALS (MOBILE) ====== */
+        --bgY-desktop: 58%;          /* mobile uses this variable too */
+        --subShift-desktop: 260px;   /* mobile: keep box under camera */
+        --heroMin: 860px;
+      }
+
       body{
         background-attachment: scroll;
-
-        /* KEY: move drone DOWN more on mobile so 2nd row buttons are in sky */
-        background-position: center 86%;
+        /* IMPORTANT: use the same variable */
+        background-position: center var(--bgY-desktop);
       }
 
       .wrap{
         padding: 14px 14px 40px;
       }
 
-      .top{
-        /* more hero room to allow sub under camera */
-        min-height: 820px;
-        gap: 12px;
-      }
-
-      .pill{
-        font-size: 13px;
-        padding: 12px 14px;
-        letter-spacing: 0.06em;
-      }
-
-      /* Tighten buttons so Timeline/Email row doesn’t collide */
+      /* Tighten buttons so 2nd row doesn't hang into the drone */
       .cta-row{
-        margin-top: 6px;
-        margin-bottom: 10px;
         gap: 8px;
+        margin-top: 4px;
       }
 
       .btn{
         padding: 9px 11px;
-        font-size: 12.8px;
-        border-radius: 14px;
+        font-size: 12.6px;
       }
 
-      /* Put the professional block BELOW the camera on mobile */
+      .pill{
+        font-size: 12.6px;
+        padding: 11px 14px;
+        letter-spacing: 0.06em;
+      }
+
       .sub{
-        margin-top: 120px;
-        transform: translateY(210px);
+        max-width: 92vw;
         font-size: 15.5px;
         padding: 14px 12px;
-        max-width: 92vw;
       }
     }
   </style>
