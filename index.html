@@ -34,7 +34,8 @@
       color: var(--text);
       line-height: 1.55;
 
-      background: url("hero.png") center 56% / cover no-repeat fixed;
+      /* KEY: move drone DOWN on desktop so tabs are in “sky”, not on drone */
+      background: url("hero.png") center 66% / cover no-repeat fixed;
       position: relative;
     }
 
@@ -72,7 +73,8 @@
       text-align:center;
       padding: 16px 16px 0;
 
-      min-height: clamp(560px, 78vh, 780px);
+      /* KEY: more hero height so the sub can sit below camera */
+      min-height: clamp(740px, 90vh, 940px);
 
       display:flex;
       flex-direction: column;
@@ -133,7 +135,7 @@
       text-decoration:none;
     }
 
-    /* ✅ KEY FIX: push this block BELOW the drone camera */
+    /* KEY: move professional block BELOW the camera on desktop */
     .sub{
       margin: 0 auto;
       max-width: 900px;
@@ -149,9 +151,9 @@
       -webkit-backdrop-filter: blur(10px);
       box-shadow: 0 14px 30px rgba(0,0,0,0.22);
 
-      /* pushes it down without affecting other elements */
-      margin-top: 84px;
-      transform: translateY(70px);
+      /* this is the money move for desktop */
+      margin-top: 110px;
+      transform: translateY(230px);
     }
 
     /* CONTENT GRID */
@@ -229,7 +231,9 @@
     @media(max-width: 768px){
       body{
         background-attachment: scroll;
-        background-position: center 74%;
+
+        /* KEY: move drone DOWN more on mobile so 2nd row buttons are in sky */
+        background-position: center 86%;
       }
 
       .wrap{
@@ -237,7 +241,8 @@
       }
 
       .top{
-        min-height: 690px; /* more room since sub is moved down */
+        /* more hero room to allow sub under camera */
+        min-height: 820px;
         gap: 12px;
       }
 
@@ -247,30 +252,26 @@
         letter-spacing: 0.06em;
       }
 
-      /* ✅ KEY FIX: drop buttons slightly lower so Timeline/Email aren't on drone */
+      /* Tighten buttons so Timeline/Email row doesn’t collide */
       .cta-row{
-        margin-top: 10px;
-        transform: translateY(14px);
-        gap: 10px;
+        margin-top: 6px;
+        margin-bottom: 10px;
+        gap: 8px;
       }
 
       .btn{
-        padding: 10px 12px;
-        font-size: 13.5px;
+        padding: 9px 11px;
+        font-size: 12.8px;
         border-radius: 14px;
       }
 
-      /* ✅ Push the professional block below the camera on mobile too */
+      /* Put the professional block BELOW the camera on mobile */
       .sub{
-        margin-top: 92px;
-        transform: translateY(92px);
+        margin-top: 120px;
+        transform: translateY(210px);
         font-size: 15.5px;
         padding: 14px 12px;
         max-width: 92vw;
-      }
-
-      .grid{
-        margin-top: 18px;
       }
     }
   </style>
