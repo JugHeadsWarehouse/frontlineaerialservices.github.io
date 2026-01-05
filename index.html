@@ -18,7 +18,7 @@
 
   /* SPACING CONTROLS */
   --desktop-gap:200px;
-  --mobile-gap:260px;
+  --mobile-gap:320px; /* ↑ more space on mobile so cards start lower */
 }
 
 /* Base */
@@ -30,6 +30,7 @@ body{
   color:var(--text);
   line-height:1.55;
 
+  /* Desktop placement */
   background:url("hero.png") center 38% / cover no-repeat fixed;
 }
 
@@ -54,7 +55,7 @@ body::after{
   pointer-events:none;
 }
 
-a{color:var(--accent);font-weight:600;text-decoration:none;}
+a{color:var(--accent);font-weight:700;text-decoration:none;}
 a:hover{text-decoration:underline;}
 
 .wrap{
@@ -75,7 +76,7 @@ a:hover{text-decoration:underline;}
   border-radius:999px;
   background:rgba(0,0,0,.45);
   border:1px solid rgba(255,255,255,.22);
-  font-weight:800;
+  font-weight:900;
   font-size:14px;
   letter-spacing:.6px;
   text-transform:uppercase;
@@ -108,6 +109,7 @@ a:hover{text-decoration:underline;}
   font-size:15px;
 }
 
+/* Tabs / buttons */
 .cta-row{
   margin-top:14px;
   display:flex;
@@ -119,11 +121,13 @@ a:hover{text-decoration:underline;}
 .btn{
   padding:10px 16px;
   border-radius:14px;
-  background:rgba(15,23,42,.5);
+  background:rgba(15,23,42,.52);
   border:1px solid rgba(255,255,255,.22);
   color:#fff;
-  font-weight:700;
+  font-weight:800;
   backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  white-space:nowrap;
 }
 
 /* GRID */
@@ -141,12 +145,15 @@ a:hover{text-decoration:underline;}
   border-radius:var(--radius);
   padding:20px;
   backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
   box-shadow:var(--shadow);
 }
 
 .card h2{margin:0 0 10px;font-size:18px;}
 ul{margin:10px 0 0;padding-left:18px;}
 li{margin:7px 0;}
+
+.muted{color:var(--muted);}
 
 .timeline{
   list-style:none;
@@ -172,16 +179,42 @@ li{margin:7px 0;}
   .span-6{grid-column:span 6;}
 }
 
-/* MOBILE FIX */
+/* ✅ MOBILE FIXES */
 @media(max-width:768px){
   body{
     background-attachment:scroll;
-    background-position:center 24%;
+
+    /* KEY FIX:
+       Move the drone DOWN on mobile so tabs aren't sitting on top of the drone/name */
+    background-position:center 58%;
   }
+
+  /* Make tabs smaller + tighter so they take less vertical space */
+  .btn{
+    padding:8px 12px;
+    font-size:13px;
+    border-radius:12px;
+  }
+  .cta-row{
+    gap:8px;
+  }
+
+  /* Cards start lower so the drone has room */
   .grid{
     margin-top:var(--mobile-gap);
   }
+
+  /* Slightly smaller header bar for readability */
+  .subbar{
+    font-size:14px;
+    padding:12px 14px;
+  }
+  .pill{
+    font-size:13px;
+    padding:9px 16px;
+  }
 }
+
 footer{
   margin-top:26px;
   text-align:center;
@@ -214,68 +247,71 @@ footer{
 
 <div class="grid">
 
-<section id="services" class="card span-6">
-<h2>Planned Initial Services</h2>
-<ul>
-<li>Aerial photography & video</li>
-<li>Real estate photography & walkthrough video</li>
-<li>Event & outdoor activity coverage</li>
-<li>Promotional & social media visuals</li>
-<li>Property documentation (visual only)</li>
-</ul>
-<p class="muted">Visual documentation only. Not a substitute for licensed inspection or engineering services.</p>
-</section>
+  <section id="services" class="card span-6">
+    <h2>Planned Initial Services</h2>
+    <ul>
+      <li>Aerial photography & video</li>
+      <li>Real estate photography & walkthrough video</li>
+      <li>Event & outdoor activity coverage</li>
+      <li>Promotional & social media visuals</li>
+      <li>Property documentation (visual only)</li>
+    </ul>
+    <p class="muted" style="margin-top:12px;">
+      Visual documentation only. Not a substitute for licensed inspection or engineering services.
+    </p>
+  </section>
 
-<section class="card span-6">
-<h2>What you can expect</h2>
-<ul>
-<li>Clear communication & expectations</li>
-<li>Organized delivery (labeled folders/files)</li>
-<li>Basic editing options available</li>
-<li>Compliance-first flight planning</li>
-</ul>
-</section>
+  <section class="card span-6">
+    <h2>What you can expect</h2>
+    <ul>
+      <li>Clear communication & expectations</li>
+      <li>Organized delivery (labeled folders/files)</li>
+      <li>Basic editing options available</li>
+      <li>Compliance-first flight planning</li>
+    </ul>
+  </section>
 
-<section id="upcoming" class="card">
-<h2>Upcoming Capabilities</h2>
-<ul>
-<li>Thermal imaging (visual data capture only)</li>
-<li>Mapping & site visualization</li>
-<li>Advanced property documentation workflows</li>
-<li>Planning & reference data capture (non-engineering)</li>
-</ul>
-</section>
+  <section id="upcoming" class="card">
+    <h2>Upcoming Capabilities</h2>
+    <p class="muted">Planned as equipment, approvals, and insurance finalize.</p>
+    <ul>
+      <li>Thermal imaging (visual data capture only)</li>
+      <li>Mapping & site visualization</li>
+      <li>Advanced property documentation workflows</li>
+      <li>Planning & reference data capture (non-engineering)</li>
+    </ul>
+  </section>
 
-<section id="timeline" class="card">
-<h2>Launch Timeline</h2>
-<ul class="timeline">
-<li><strong>Phase 1</strong><span class="tag">Now</span> — Website live, portfolio building</li>
-<li><strong>Phase 2</strong><span class="tag">Next</span> — Sample galleries & packages</li>
-<li><strong>Phase 3</strong><span class="tag">Soon</span> — Scheduling & expanded capabilities</li>
-</ul>
-</section>
+  <section id="timeline" class="card">
+    <h2>Launch Timeline</h2>
+    <ul class="timeline">
+      <li><strong>Phase 1</strong><span class="tag">Now</span> — Website live, portfolio building</li>
+      <li><strong>Phase 2</strong><span class="tag">Next</span> — Sample galleries & packages</li>
+      <li><strong>Phase 3</strong><span class="tag">Soon</span> — Scheduling & expanded capabilities</li>
+    </ul>
+  </section>
 
-<section class="card span-6">
-<h2>Service Area</h2>
-<p>Jefferson County, NY and surrounding areas.</p>
-</section>
+  <section class="card span-6">
+    <h2>Service Area</h2>
+    <p>Jefferson County, NY and surrounding areas.</p>
+  </section>
 
-<section class="card span-6">
-<h2>Contact</h2>
-<p>Email: <a href="mailto:info.frontlinedroneaerial@gmail.com">info.frontlinedroneaerial@gmail.com</a></p>
-</section>
+  <section class="card span-6">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:info.frontlinedroneaerial@gmail.com">info.frontlinedroneaerial@gmail.com</a></p>
+  </section>
 
-<section class="card">
-<h2>Compliance Note</h2>
-<p>
-All operations are conducted in accordance with FAA regulations and applicable airspace authorizations.
-</p>
-</section>
+  <section class="card">
+    <h2>Compliance Note</h2>
+    <p class="muted">
+      All operations are conducted in accordance with FAA regulations and applicable airspace authorizations.
+    </p>
+  </section>
 
 </div>
 
 <footer>
-© <span id="y"></span> Frontline Drone & Aerial Services • Built on GitHub Pages
+  © <span id="y"></span> Frontline Drone & Aerial Services • Built on GitHub Pages
 </footer>
 
 </div>
